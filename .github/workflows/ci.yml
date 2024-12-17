@@ -21,9 +21,11 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
+        working-directory: talawa
         run: npm install
 
       - name: Run tests with coverage
+        working-directory: talawa
         run: npx jest --coverage
 
       - name: Upload coverage reports to Codecov
