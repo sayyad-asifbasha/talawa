@@ -22,10 +22,10 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: cd client && npm install
+        run: npm install
 
       - name: Run tests
-        run: cd client && npx jest --coverage
+        run: npx jest --coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
