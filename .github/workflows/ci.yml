@@ -1,25 +1,20 @@
 name: Run tests and upload coverage
 
 on:
-  push:
-    branches:
-      - main
+  push
 
 jobs:
   test:
     name: Run tests and collect coverage
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
+      - name: Set up Node
         uses: actions/setup-node@v4
-        with:
-          node-version: '16'
 
       - name: Install dependencies
         run: npm install
@@ -27,7 +22,7 @@ jobs:
       - name: Run tests
         run: npx jest --coverage
 
-      - name: Upload coverage to Codecov
+      - name: Upload results to Codecov
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
